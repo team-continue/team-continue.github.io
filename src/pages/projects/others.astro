@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tag from '../../components/Tag.astro';
+
+const activities = [
+  {
+    title: '全方向移動台車の試作',
+    description: 'オムニホイールとメカナムホイールの比較検証用に小型台車を製作。CoRE 2025の足回り選定の基礎データになった。',
+    tags: ['試作', 'メカ'],
+  },
+  {
+    title: 'LiDAR自己位置推定の技術検証',
+    description: '2D LiDARによるスキャンマッチングの精度をフィールドモックで検証。CoRE 2026の自律移動採用の判断材料に。',
+    tags: ['技術検証', 'LiDAR', 'ROS 2'],
+  },
+  {
+    title: 'ROS 2勉強会',
+    description: '新メンバー向けにROS 2の基礎(ノード・トピック・launch)を扱う勉強会を隔週で開催。',
+    tags: ['勉強会', 'ROS 2'],
+  },
+  {
+    title: 'モータPID制御実験',
+    description: 'エンコーダ付きギヤドモータの速度制御パラメータを実験装置でチューニング。制御ゲイン決定の手順を整備した。',
+    tags: ['制御実験', 'STM32'],
+  },
+  {
+    title: 'IMU・エンコーダのセンサ検証',
+    description: 'オドメトリ精度向上のため、複数のIMUのドリフト特性とエンコーダ分解能の影響を比較評価。',
+    tags: ['センサ検証', 'IMU'],
+  },
+  {
+    title: '過去の活動アーカイブ',
+    description: 'チーム発足からCoRE初参戦までの活動記録。ライントレーサ製作や学内展示など。',
+    tags: ['過去の活動'],
+  },
+];
+---
+
+<BaseLayout
+  title="その他プロジェクト"
+  description="team-continue の大会参戦以外の活動。小規模な試作、技術検証、勉強会、制御実験、センサ検証などを紹介します。"
+>
+  <div class="page-header">
+    <h1>その他プロジェクト</h1>
+    <p class="lead">大会参戦以外の試作・技術検証・勉強会などの活動です。</p>
+  </div>
+
+  <div class="card-grid">
+    {activities.map(({ title, description, tags }) => (
+      <article class="card">
+        <div class="card-body">
+          <h3 class="card-title">{title}</h3>
+          <p class="card-summary">{description}</p>
+          <ul class="tag-list">
+            {tags.map((tag) => (
+              <li><Tag label={tag} /></li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</BaseLayout>

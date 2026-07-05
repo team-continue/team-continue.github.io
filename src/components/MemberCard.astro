@@ -1,0 +1,115 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Tag from './Tag.astro';
+import { withBase } from '../lib/content';
+
+interface Props {
+  member: CollectionEntry<'members'>;
+  /** slug → プロジェクト名の解決マップ */
+  projectTitles: Record<string, string>;
+  /** このメンバーが書いた公開記事 */
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { member, projectTitles, posts } = Astro.props;
+const { name, role, photo, bio, tags, github, x, projects } = member.data;
+const initial = name.charAt(0);
+---
+
+<article class="card member-card">
+  <div class="card-body">
+    <div class="member-head">
+      {photo ? (
+        <img class="member-photo" src={photo} alt={name} loading="lazy" />
+      ) : (
+        <div class="photo-placeholder member-photo" aria-hidden="true">{initial}</div>
+      )}
+      <div>
+        <h3 class="card-title">{name}</h3>
+        <p class="member-role">{role}</p>
+      </div>
+    </div>
+    <p class="card-summary">{bio}</p>
+    <ul class="tag-list">
+      {tags.map((tag) => (
+        <li><Tag label={tag} /></li>
+      ))}
+    </ul>
+    {projects.length > 0 && (
+      <div class="member-projects">
+        <span class="member-label">担当プロジェクト:</span>
+        {projects.map((slug) => (
+          <a href={withBase(`/projects/${slug}`)}>{projectTitles[slug] ?? slug}</a>
+        ))}
+      </div>
+    )}
+    {(github || x) && (
+      <div class="member-links">
+        {github && <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>}
+        {x && <a href={x} target="_blank" rel="noopener noreferrer">X</a>}
+      </div>
+    )}
+    {posts.length > 0 && (
+      <div class="member-posts">
+        <span class="member-label">執筆記事:</span>
+        <ul>
+          {posts.map((post) => (
+            <li>
+              <a href={withBase(`/blog/${post.data.slug}`)}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .member-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .member-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .member-role {
+    margin: 0.15rem 0 0;
+    font-size: 0.82rem;
+    color: var(--color-accent);
+  }
+
+  .member-label {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-right: 0.4rem;
+  }
+
+  .member-projects,
+  .member-links {
+    font-size: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.8rem;
+    align-items: center;
+  }
+
+  .member-posts {
+    font-size: 0.85rem;
+  }
+
+  .member-posts ul {
+    margin: 0.3rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .member-posts li {
+    margin: 0.15rem 0;
+  }
+</style>

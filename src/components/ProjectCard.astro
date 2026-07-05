@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Tag from './Tag.astro';
+import { withBase } from '../lib/content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, slug, year, competition, description, heroImage, tags } = project.data;
+const url = withBase(`/projects/${slug}`);
+---
+
+<article class="card">
+  <a href={url} aria-label={title}>
+    {heroImage ? (
+      <img class="thumb" src={heroImage} alt={title} loading="lazy" />
+    ) : (
+      <div class="thumb-placeholder" aria-hidden="true">{slug.toUpperCase()}</div>
+    )}
+  </a>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="badge">{year}</span>
+      <span>{competition}</span>
+    </div>
+    <h3 class="card-title"><a href={url}>{title}</a></h3>
+    <p class="card-summary">{description}</p>
+    <ul class="tag-list">
+      {tags.map((tag) => (
+        <li><Tag label={tag} /></li>
+      ))}
+    </ul>
+  </div>
+</article>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { BLOG_CATEGORIES, getPublishedPosts } from '../../lib/content';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout
+  title="BLOG"
+  description="team-continue の技術ブログ。活動報告、メカ・回路・ソフトウェアの技術記事、大会レポートを掲載しています。"
+>
+  <div class="page-header">
+    <h1>BLOG</h1>
+    <p class="lead">活動報告と技術記事を発信しています。</p>
+  </div>
+
+  <div class="category-filter" role="group" aria-label="カテゴリで絞り込み">
+    <button class="filter-btn" type="button" data-category="" aria-pressed="true">すべて</button>
+    {BLOG_CATEGORIES.map((category) => (
+      <button class="filter-btn" type="button" data-category={category} aria-pressed="false">
+        {category}
+      </button>
+    ))}
+  </div>
+
+  <div class="card-grid" id="blog-grid">
+    {posts.map((post) => (
+      <div class="blog-item" data-category={post.data.category}>
+        <BlogCard post={post} />
+      </div>
+    ))}
+  </div>
+  <p class="no-posts" id="no-posts" hidden>このカテゴリの記事はまだありません。</p>
+</BaseLayout>
+
+<style>
+  .category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition),
+      background var(--transition);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .filter-btn[aria-pressed='true'] {
+    background: rgba(56, 225, 255, 0.12);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .blog-item {
+    display: contents;
+  }
+
+  .blog-item[hidden] {
+    display: none;
+  }
+
+  .no-posts {
+    color: var(--color-text-muted);
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.blog-item');
+  const noPosts = document.getElementById('no-posts')!;
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category ?? '';
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      let visible = 0;
+      items.forEach((item) => {
+        const show = category === '' || item.dataset.category === category;
+        item.hidden = !show;
+        if (show) visible++;
+      });
+      noPosts.hidden = visible > 0;
+    });
+  });
+</script>
