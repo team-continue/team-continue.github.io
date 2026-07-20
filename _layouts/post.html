@@ -1,20 +1,7 @@
 ---
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>{{ page.title }}｜チームこんてにゅ～ {% if page.collection == "news" %}NEWS{% else %}BLOG{% endif %}</title>
-<meta name="description" content="{{ page.description }}">
-<link rel="stylesheet" href="/styles.css">
-</head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000EE" vlink="#551A8B">
-<table border="0" cellpadding="8" cellspacing="0" width="100%">
-<tr>
-{% include sidebar.html %}
-<td valign="top">
-<font face="ＭＳ Ｐゴシック">
-
+{%- capture page_title -%}{{ page.title }}｜チームこんてにゅ～ {% if page.collection == "news" %}NEWS{% else %}BLOG{% endif %}{%- endcapture -%}
+{% include header.html title=page_title description=page.description %}
 <center><font size="6"><b>{{ page.title }}</b></font></center>
 <center><font size="2">{{ page.date | date: "%Y.%m.%d" }}{% if page.category %}｜{{ page.category }}{% endif %}</font></center>
 <hr size="2">

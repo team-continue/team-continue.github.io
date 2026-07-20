@@ -1,20 +1,6 @@
 ---
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>BLOG｜チームこんてにゅ～</title>
-<meta name="description" content="チームこんてにゅ～の活動ブログです。活動報告、メカ・回路・ソフトウェアの技術記事、大会レポートを掲載しています。">
-<link rel="stylesheet" href="/styles.css">
-</head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000EE" vlink="#551A8B">
-<table border="0" cellpadding="8" cellspacing="0" width="100%">
-<tr>
-{% include sidebar.html %}
-<td valign="top">
-<font face="ＭＳ Ｐゴシック">
-
+{% include header.html title="BLOG｜チームこんてにゅ～" description="チームこんてにゅ～の活動ブログです。活動報告、メカ・回路・ソフトウェアの技術記事、大会レポートを掲載しています。" %}
 <center><font size="6"><b>ブログ記事一覧</b></font></center>
 <hr size="2">
 {% assign blog_list = site.blog | sort: "date" | reverse %}
