@@ -1,0 +1,23 @@
+---
+---
+{%- capture page_title -%}{{ page.title }}｜チームこんてにゅ～ {% if page.collection == "news" %}NEWS{% else %}BLOG{% endif %}{%- endcapture -%}
+{% include header.html title=page_title description=page.description %}
+<center><font size="6"><b>{{ page.title }}</b></font></center>
+<center><font size="2">{{ page.date | date: "%Y.%m.%d" }}{% if page.category %}｜{{ page.category }}{% endif %}</font></center>
+<hr size="2">
+<font size="3">
+{{ content }}
+</font>
+<br>
+{% if page.collection == "news" %}
+→ <a href="/news/">お知らせ一覧に戻る</a>
+{% else %}
+→ <a href="/blog/">ブログ記事一覧に戻る</a>
+{% endif %}
+{% include footer.html %}
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

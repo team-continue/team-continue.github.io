@@ -1,20 +1,6 @@
 ---
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>チームこんてにゅ～｜ロボコンチーム公式ホームページ</title>
-<meta name="description" content="ロボコンチーム「チームこんてにゅ～」の公式ホームページです。CoRE 2025 / CoRE 2026 への挑戦、メカ・回路・ソフトウェアの技術情報、メンバー紹介、活動ブログを掲載しています。">
-<link rel="stylesheet" href="/styles.css">
-</head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000EE" vlink="#551A8B">
-<table border="0" cellpadding="8" cellspacing="0" width="100%">
-<tr>
-{% include sidebar.html %}
-<td valign="top">
-<font face="ＭＳ Ｐゴシック">
-
+{% include header.html title="チームこんてにゅ～｜ロボコンチーム公式ホームページ" description="ロボコンチーム「チームこんてにゅ～」の公式ホームページです。CoRE 2025 / CoRE 2026 への挑戦、メカ・回路・ソフトウェアの技術情報、メンバー紹介、活動ブログを掲載しています。" %}
 <center>
 <img class="site-title" src="/imgs/title.svg" width="80%" alt="チームこんてにゅ～のホームページ">
 <font size="3">ようこそ！ここはロボコンチーム「チームこんてにゅ～」の公式ホームページです。</font>
@@ -32,6 +18,46 @@
 <b></b>
 </font>
 <br><br>
+<font size="4" color="#000080"><b>■お知らせ</b></font><hr size="1">
+<font size="3">
+<table border="0" cellpadding="3" cellspacing="0">
+{% assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 %}
+{% for post in latest_news %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+<br>
+→ <a href="/news/">お知らせ一覧はこちら</a>
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■ブログ記事</b></font><hr size="1">
+<font size="3">
+<table border="0" cellpadding="3" cellspacing="0">
+{% assign latest_blog = site.blog | sort: "date" | reverse | slice: 0, 3 %}
+{% for post in latest_blog %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+<br>
+→ <a href="/blog/">ブログ記事一覧はこちら</a>
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■X（旧Twitter）</b></font><hr size="1">
+<font size="3">
+<table border="1" cellpadding="5" cellspacing="0" width="90%">
+<tr bgcolor="#CCCCFF"><td><font size="3"><b>X（旧Twitter）</b></font></td></tr>
+<tr><td><font size="2">活動のようすを不定期につぶやいています。<br>→ <a href="https://x.com/team_continue_">https://x.com/team_continue_</a></font></td></tr>
+</table>
+</font>
+<br>
+<font size="4" color="#000080"><b>■更新履歴</b></font><hr size="1">
+<font size="3">
+<table border="1" cellpadding="5" cellspacing="0">
+<tr bgcolor="#CCCCFF"><td><b>日付</b></td><td><b>内容</b></td></tr>
+<tr><td>2026.07.20</td><td>ホームページを公開しました。</td></tr>
+</table>
+</font>
+<br>
 <font size="4" color="#000080"><b>■主要プロジェクト</b></font><hr size="1">
 <font size="3">
 <table border="1" cellpadding="5" cellspacing="0">
@@ -42,30 +68,14 @@
 </table>
 </font>
 <br>
-<font size="4" color="#000080"><b>■最新のブログ記事</b></font><hr size="1">
-<font size="3">
-<table border="0" cellpadding="3" cellspacing="0">
-
-</table>
-<br>
-→ <a href="/blog/">ブログ記事一覧はこちら</a>
-</font>
-<br><br>
-<font size="4" color="#000080"><b>■更新履歴</b></font><hr size="1">
-<font size="3">
-<table border="1" cellpadding="5" cellspacing="0">
-<tr bgcolor="#CCCCFF"><td><b>日付</b></td><td><b>内容</b></td></tr>
-<tr><td>2026.07.20</td><td>ホームページを公開しました。</td></tr>
-</table>
-</font>
-<br>
 <font size="4" color="#000080"><b>■ごあんない</b></font><hr size="1">
 <font size="3">
 → <a href="/projects/">PROJECTを見る</a><br>
 → <a href="/blog/">BLOGを見る</a><br>
+→ <a href="/news/">NEWSを見る</a><br>
 → <a href="/members/">メンバー紹介を見る</a><br>
-→ <a href="/links/">SNS・LINKを見る</a><br>
-→ <a href="https://github.com/team-continue">GitHubを見る</a>
+→ <a href="/links/">LINKSを見る</a><br>
+→ <a href="/about/">ABOUT USを見る</a>
 </font>
 
 {% include footer.html %}
