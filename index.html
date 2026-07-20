@@ -32,6 +32,30 @@
 <b></b>
 </font>
 <br><br>
+<font size="4" color="#000080"><b>■お知らせ</b></font><hr size="1">
+<font size="3">
+<table border="0" cellpadding="3" cellspacing="0">
+{% assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 %}
+{% for post in latest_news %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+<br>
+→ <a href="/news/">お知らせ一覧はこちら</a>
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■ブログ記事</b></font><hr size="1">
+<font size="3">
+<table border="0" cellpadding="3" cellspacing="0">
+{% assign latest_blog = site.blog | sort: "date" | reverse | slice: 0, 3 %}
+{% for post in latest_blog %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+<br>
+→ <a href="/blog/">ブログ記事一覧はこちら</a>
+</font>
+<br><br>
 <font size="4" color="#000080"><b>■主要プロジェクト</b></font><hr size="1">
 <font size="3">
 <table border="1" cellpadding="5" cellspacing="0">
@@ -42,15 +66,6 @@
 </table>
 </font>
 <br>
-<font size="4" color="#000080"><b>■最新のブログ記事</b></font><hr size="1">
-<font size="3">
-<table border="0" cellpadding="3" cellspacing="0">
-
-</table>
-<br>
-→ <a href="/blog/">ブログ記事一覧はこちら</a>
-</font>
-<br><br>
 <font size="4" color="#000080"><b>■更新履歴</b></font><hr size="1">
 <font size="3">
 <table border="1" cellpadding="5" cellspacing="0">
@@ -63,6 +78,7 @@
 <font size="3">
 → <a href="/projects/">PROJECTを見る</a><br>
 → <a href="/blog/">BLOGを見る</a><br>
+→ <a href="/news/">NEWSを見る</a><br>
 → <a href="/members/">メンバー紹介を見る</a><br>
 → <a href="/links/">SNS・LINKを見る</a><br>
 → <a href="https://github.com/team-continue">GitHubを見る</a>

@@ -1,0 +1,23 @@
+collections:
+  blog:
+    output: true
+    permalink: /:collection/:path/
+  news:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "blog"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: "post"
+
+exclude:
+  - templates
+  - README.md
