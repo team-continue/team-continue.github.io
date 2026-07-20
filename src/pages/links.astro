@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const links = [
+  {
+    title: 'GitHub',
+    description: 'チームのソースコード・CAD・基板データを公開しています。',
+    url: 'https://github.com/team-continue',
+    label: 'github.com/team-continue',
+  },
+  {
+    title: 'X (Twitter)',
+    description: '活動の様子や大会情報を発信しています。',
+    url: 'https://x.com/team_continue',
+    label: '@team_continue',
+  },
+  {
+    title: '連絡先',
+    description: '取材・協賛・見学などのご連絡はメールでお願いします。',
+    url: 'mailto:contact@example.com',
+    label: 'contact@example.com',
+  },
+  {
+    title: 'CoRE 公式サイト',
+    description: '参戦している大会「The Championship of Robotics Engineers」の公式ページです。',
+    url: 'https://core.scramble-robot.org/',
+    label: 'core.scramble-robot.org',
+  },
+];
+---
+
+<BaseLayout
+  title="SNS・LINK"
+  description="team-continue のSNSアカウント、GitHub、連絡先、関連大会ページへのリンク集です。"
+>
+  <div class="page-header">
+    <h1>SNS・LINK</h1>
+    <p class="lead">SNSアカウントと関連リンクの一覧です。</p>
+  </div>
+
+  <div class="card-grid cols-2">
+    {links.map(({ title, description, url, label }) => (
+      <a class="card link-card" href={url} target="_blank" rel="noopener noreferrer">
+        <div class="card-body">
+          <h3 class="card-title">{title}</h3>
+          <p class="card-summary">{description}</p>
+          <span class="link-label">{label} ↗</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .link-card:hover {
+    opacity: 1;
+  }
+
+  .link-label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--color-accent);
+  }
+</style>

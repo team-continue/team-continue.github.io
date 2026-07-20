@@ -1,0 +1,180 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectNav from '../../../components/ProjectNav.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import Tag from '../../../components/Tag.astro';
+import {
+  getMembers,
+  getProjects,
+  getPublishedPosts,
+  SECTION_LABELS,
+  withBase,
+} from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, year, competition, concept, summary, heroImage, tags, github } =
+  project.data;
+
+const { Content } = await render(project);
+
+const allMembers = await getMembers();
+const projectMembers = allMembers.filter((m) =>
+  project.data.members.includes(m.data.slug)
+);
+
+const relatedPosts = (await getPublishedPosts()).filter(
+  (post) => post.data.project === project.data.slug
+);
+
+const sections = await getCollection(
+  'projectSections',
+  ({ data }) => data.project === project.data.slug
+);
+sections.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title={title} description={summary}>
+  <div class="page-header">
+    <div class="card-meta">
+      <span class="badge">{year}</span>
+      <span>{competition}</span>
+    </div>
+    <h1>{title}</h1>
+    <p class="lead">{concept}</p>
+  </div>
+
+  <ProjectNav projectSlug={project.data.slug} current="overview" />
+
+  {heroImage ? (
+    <img class="thumb project-hero" src={heroImage} alt={`${title} ロボット全体写真`} />
+  ) : (
+    <div class="thumb-placeholder project-hero" aria-hidden="true">ROBOT PHOTO — COMING SOON</div>
+  )}
+
+  <ul class="tag-list project-tags">
+    {tags.map((tag) => (
+      <li><Tag label={tag} /></li>
+    ))}
+  </ul>
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  <section class="section">
+    <h2 class="section-title">担当メンバー</h2>
+    <ul class="member-chips">
+      {projectMembers.map((member) => (
+        <li>
+          <a class="member-chip" href={withBase('/members')}>
+            <span class="photo-placeholder chip-photo" aria-hidden="true">
+              {member.data.name.charAt(0)}
+            </span>
+            <span>
+              <strong>{member.data.name}</strong>
+              <small>{member.data.role}</small>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    {github && (
+      <p>
+        <a class="btn btn-outline" href={github} target="_blank" rel="noopener noreferrer">
+          GitHubリポジトリを見る
+        </a>
+      </p>
+    )}
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">技術詳細</h2>
+    <div class="card-grid">
+      {sections.map((section) => (
+        <a
+          class="card section-card"
+          href={withBase(`/projects/${project.data.slug}/${section.data.section}`)}
+        >
+          <div class="card-body">
+            <h3 class="card-title">{SECTION_LABELS[section.data.section]}</h3>
+            <p class="card-summary">{section.data.summary}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {relatedPosts.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">関連ブログ記事</h2>
+      <div class="card-grid">
+        {relatedPosts.map((post) => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .project-hero {
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    margin-bottom: 1.25rem;
+  }
+
+  .project-tags {
+    margin-bottom: 1.5rem;
+  }
+
+  .member-chips {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .member-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1rem 0.45rem 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color var(--transition);
+  }
+
+  .member-chip:hover {
+    border-color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .chip-photo {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .member-chip small {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.72rem;
+  }
+
+  .section-card:hover {
+    opacity: 1;
+  }
+</style>

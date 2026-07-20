@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Tag from './Tag.astro';
+import { formatDate, withBase } from '../lib/content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, slug, date, author, category, summary, heroImage, tags } = post.data;
+const url = withBase(`/blog/${slug}`);
+---
+
+<article class="card">
+  <a href={url} aria-label={title}>
+    {heroImage ? (
+      <img class="thumb" src={heroImage} alt={title} loading="lazy" />
+    ) : (
+      <div class="thumb-placeholder" aria-hidden="true">BLOG</div>
+    )}
+  </a>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="badge">{category}</span>
+      <time datetime={date.toISOString()}>{formatDate(date)}</time>
+      <span>{author}</span>
+    </div>
+    <h3 class="card-title"><a href={url}>{title}</a></h3>
+    <p class="card-summary">{summary}</p>
+    <ul class="tag-list">
+      {tags.map((tag) => (
+        <li><Tag label={tag} /></li>
+      ))}
+    </ul>
+  </div>
+</article>

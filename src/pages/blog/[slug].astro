@@ -1,0 +1,154 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Tag from '../../components/Tag.astro';
+import { formatDate, getProjects, getPublishedPosts, withBase } from '../../lib/content';
+
+export async function getStaticPaths() {
+  // draft記事はページ自体を生成しない
+  const posts = await getPublishedPosts();
+  return posts.map((post, index) => ({
+    params: { slug: post.data.slug },
+    props: {
+      post,
+      // date降順ソート済みのため、前の記事 = index+1 (古い方)、次の記事 = index-1 (新しい方)
+      prevPost: posts[index + 1] ?? null,
+      nextPost: posts[index - 1] ?? null,
+    },
+  }));
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { title, date, author, category, project, tags, summary, heroImage } = post.data;
+
+const { Content } = await render(post);
+
+const projects = await getProjects();
+const relatedProject = project
+  ? projects.find((p) => p.data.slug === project)
+  : undefined;
+
+// 同じプロジェクトまたは同じカテゴリの公開記事 (自身は除外)
+const relatedPosts = (await getPublishedPosts())
+  .filter(
+    (p) =>
+      p.data.slug !== post.data.slug &&
+      ((project && p.data.project === project) || p.data.category === category)
+  )
+  .slice(0, 3);
+---
+
+<BaseLayout title={title} description={summary}>
+  <article>
+    <div class="page-header">
+      <div class="card-meta">
+        <span class="badge">{category}</span>
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        <span>{author}</span>
+        {relatedProject && (
+          <a href={withBase(`/projects/${relatedProject.data.slug}`)}>
+            {relatedProject.data.title}
+          </a>
+        )}
+      </div>
+      <h1>{title}</h1>
+      <ul class="tag-list">
+        {tags.map((tag) => (
+          <li><Tag label={tag} /></li>
+        ))}
+      </ul>
+    </div>
+
+    {heroImage && <img class="thumb post-hero" src={heroImage} alt={title} />}
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  <nav class="post-nav" aria-label="前後の記事">
+    {prevPost ? (
+      <a class="post-nav-link prev" href={withBase(`/blog/${prevPost.data.slug}`)}>
+        <small>← 前の記事</small>
+        <span>{prevPost.data.title}</span>
+      </a>
+    ) : (
+      <span></span>
+    )}
+    {nextPost ? (
+      <a class="post-nav-link next" href={withBase(`/blog/${nextPost.data.slug}`)}>
+        <small>次の記事 →</small>
+        <span>{nextPost.data.title}</span>
+      </a>
+    ) : (
+      <span></span>
+    )}
+  </nav>
+
+  {relatedPosts.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">関連記事</h2>
+      <div class="card-grid">
+        {relatedPosts.map((related) => (
+          <BlogCard post={related} />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .post-hero {
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    margin-bottom: 1.5rem;
+  }
+
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color var(--transition);
+  }
+
+  .post-nav-link:hover {
+    border-color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .post-nav-link small {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+
+  .post-nav-link span {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .post-nav-link.next {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  @media (max-width: 560px) {
+    .post-nav {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

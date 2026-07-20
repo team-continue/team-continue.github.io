@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectNav from '../../../components/ProjectNav.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import Tag from '../../../components/Tag.astro';
+import {
+  getProjects,
+  getPublishedPosts,
+  SECTION_LABELS,
+  SECTION_TO_CATEGORY,
+} from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  const sections = await getCollection('projectSections');
+
+  return sections.flatMap((sectionEntry) => {
+    const project = projects.find((p) => p.data.slug === sectionEntry.data.project);
+    if (!project) return [];
+    return [
+      {
+        params: { slug: project.data.slug, section: sectionEntry.data.section },
+        props: { project, sectionEntry },
+      },
+    ];
+  });
+}
+
+const { project, sectionEntry } = Astro.props;
+const { title, section, summary, heroImage, tags } = sectionEntry.data;
+
+const { Content } = await render(sectionEntry);
+
+// このプロジェクト × 対応カテゴリの公開記事のみを関連記事として表示する
+const relatedPosts = (await getPublishedPosts()).filter(
+  (post) =>
+    post.data.project === project.data.slug &&
+    post.data.category === SECTION_TO_CATEGORY[section]
+);
+---
+
+<BaseLayout title={title} description={summary}>
+  <div class="page-header">
+    <div class="card-meta">
+      <span class="badge">{project.data.title}</span>
+      <span>{SECTION_LABELS[section]}</span>
+    </div>
+    <h1>{title}</h1>
+    <p class="lead">{summary}</p>
+  </div>
+
+  <ProjectNav projectSlug={project.data.slug} current={section} />
+
+  {heroImage && (
+    <img class="thumb section-hero" src={heroImage} alt={title} />
+  )}
+
+  <ul class="tag-list section-tags">
+    {tags.map((tag) => (
+      <li><Tag label={tag} /></li>
+    ))}
+  </ul>
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  {relatedPosts.length > 0 && (
+    <section class="section">
+      <h2 class="section-title">関連ブログ記事</h2>
+      <div class="card-grid">
+        {relatedPosts.map((post) => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .section-hero {
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-tags {
+    margin-bottom: 1.5rem;
+  }
+</style>
