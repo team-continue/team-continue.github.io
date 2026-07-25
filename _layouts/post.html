@@ -1,6 +1,6 @@
 ---
 ---
-{%- capture page_title -%}{{ page.title }}｜チームこんてにゅ～ {% if page.collection == "news" %}NEWS{% else %}BLOG{% endif %}{%- endcapture -%}
+{%- capture page_title -%}{{ page.title }}｜こんてにゅ～ {% if page.collection == "news" %}NEWS{% else %}BLOG{% endif %}{%- endcapture -%}
 {% include header.html title=page_title description=page.description %}
 <center><font size="6"><b>{{ page.title }}</b></font></center>
 <center><font size="2">{{ page.date | date: "%Y.%m.%d" }}{% if page.category %}｜{{ page.category }}{% endif %}</font></center>
