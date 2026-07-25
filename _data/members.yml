@@ -1,6 +1,7 @@
 - name: "pikurintan"
   role: "リーダー、マネージャー"
   comment: "楽しくロボコンします！"
+  photo: "https://pbs.twimg.com/profile_images/1152880800976654336/p2FVZSwT_400x400.jpg"
   team_tags:
     - "制御班"
   projects:
@@ -14,6 +15,7 @@
 - name: "One杉"
   role: "サブリーダー、広報"
   comment: ""
+  photo: "https://pbs.twimg.com/profile_images/1872071603984670720/m2Wa7J3L_400x400.jpg"
   team_tags:
     - "機構班"
   projects:
@@ -27,6 +29,7 @@
 - name: "naokichi"
   role: "サブリーダー、書類"
   comment: ""
+  photo: "https://pbs.twimg.com/profile_images/1739688640652140544/MCNDNivt_400x400.jpg"
   team_tags:
     - "回路班"
     - "制御班"
@@ -41,6 +44,7 @@
 - name: "しゅりんぷ"
   role: "機構班長"
   comment: ""
+  photo: "https://pbs.twimg.com/profile_images/1561550527313326080/kcw7qQJd_400x400.jpg"
   team_tags:
     - "機構班"
   projects:
@@ -54,6 +58,7 @@
 - name: "pizac"
   role: "回路班員"
   comment: ""
+  photo: "https://pbs.twimg.com/profile_images/1740100643225042944/hIr7_1mJ_400x400.jpg"
   team_tags:
     - "回路班"
   projects:
@@ -67,6 +72,7 @@
 - name: "きゅりあす"
   role: "制御班長、会計"
   comment: ""
+  photo: "https://pbs.twimg.com/profile_images/1815405829249703936/J6w2hb0M_400x400.jpg"
   team_tags:
     - "制御班"
   projects:
@@ -80,6 +86,7 @@
 - name: "Ray"
   role: "広報"
   comment: ""
+  photo: ""
   team_tags:
     - "制御班"
   projects:
@@ -93,6 +100,7 @@
 - name: "hauki"
   role: ""
   comment: ""
+  photo: ""
   team_tags:
     - "制御班"
   projects:
@@ -106,6 +114,7 @@
 - name: "0.hayate"
   role: ""
   comment: ""
+  photo: ""
   team_tags:
     - "回路班"
   projects:
@@ -119,6 +128,7 @@
 - name: "ウ夕"
   role: ""
   comment: ""
+  photo: "https://pbs.twimg.com/profile_images/1819939688293244929/y9l1H9SZ_400x400.jpg"
   team_tags:
     - "制御班"
   projects:
