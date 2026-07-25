@@ -1,0 +1,87 @@
+---
+---
+{% include header.html title="こんてにゅ～｜ロボコンチーム公式ホームページ" description="ロボコンチーム「こんてにゅ～」の公式ホームページです。CoRE 2025 / CoRE 2026 への挑戦、メカ・回路・ソフトウェアの技術情報、メンバー紹介、活動ブログを掲載しています。" %}
+<center>
+<img class="site-title" src="/imgs/title.svg" width="80%" alt="こんてにゅ～のホームページ">
+<font size="3">ようこそ！ここはロボコンチーム「こんてにゅ～」の公式ホームページです。</font>
+</center>
+<hr size="2">
+<marquee><font color="#FF0000" size="3">★☆★　【祝】ホームページ公開！　★☆★</font></marquee>
+<br>
+<center><img src="/imgs/robot.png" width="400" alt="こんてにゅ～のロボット全体写真" border="1"></center>
+<br>
+<font size="4" color="#000080"><b>■チーム紹介</b></font><hr size="1">
+<font size="3">
+こんてにゅ～は、次世代ロボットコンテスト <b>CoRE（The Championship of Robotics Engineers）</b> への出場を目指して
+活動している社会人ロボコンチームです。機構・回路・ソフトウェアの各班に分かれて、
+自律移動ロボットの設計・製作を行っています。<br><br>
+<b></b>
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■お知らせ</b></font><hr size="1">
+<font size="3">
+<table border="0" cellpadding="3" cellspacing="0">
+{% assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 %}
+{% for post in latest_news %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+<br>
+→ <a href="/news/">お知らせ一覧はこちら</a>
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■ブログ記事</b></font><hr size="1">
+<font size="3">
+<table border="0" cellpadding="3" cellspacing="0">
+{% assign latest_blog = site.blog | sort: "date" | reverse | slice: 0, 3 %}
+{% for post in latest_blog %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+<br>
+→ <a href="/blog/">ブログ記事一覧はこちら</a>
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■X（旧Twitter）</b></font><hr size="1">
+<font size="3">
+<table border="1" cellpadding="5" cellspacing="0" width="90%">
+<tr bgcolor="#CCCCFF"><td><font size="3"><b>X（旧Twitter）</b></font></td></tr>
+<tr><td><font size="2">活動のようすを不定期につぶやいています。<br>→ <a href="https://x.com/robot_continue">https://x.com/robot_continue</a></font></td></tr>
+</table>
+</font>
+<br>
+<font size="4" color="#000080"><b>■更新履歴</b></font><hr size="1">
+<font size="3">
+<table border="1" cellpadding="5" cellspacing="0">
+<tr bgcolor="#CCCCFF"><td><b>日付</b></td><td><b>内容</b></td></tr>
+<tr><td>2026.07.25</td><td>ホームページを公開しました。</td></tr>
+</table>
+</font>
+<br>
+<font size="4" color="#000080"><b>■主要プロジェクト</b></font><hr size="1">
+<font size="3">
+<table border="1" cellpadding="5" cellspacing="0">
+<tr bgcolor="#CCCCFF"><td><b>プロジェクト</b></td><td><b>大会</b></td><td><b>年度</b></td></tr>
+<tr><td><a href="/projects/core2025/">CoRE 2025</a></td><td>The Championship of Robotics Engineers 2025</td><td>2025</td></tr>
+<tr><td><a href="/projects/core2026/">CoRE 2026</a></td><td>The Championship of Robotics Engineers 2026</td><td>2026</td></tr>
+<tr><td><a href="/projects/others/">その他プロジェクト</a></td><td>─</td><td>─</td></tr>
+</table>
+</font>
+<br>
+<font size="4" color="#000080"><b>■ごあんない</b></font><hr size="1">
+<font size="3">
+→ <a href="/projects/">PROJECTを見る</a><br>
+→ <a href="/blog/">BLOGを見る</a><br>
+→ <a href="/news/">NEWSを見る</a><br>
+→ <a href="/members/">メンバー紹介を見る</a><br>
+→ <a href="/links/">LINKSを見る</a><br>
+→ <a href="/about/">ABOUT USを見る</a>
+</font>
+
+{% include footer.html %}
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

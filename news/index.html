@@ -1,0 +1,21 @@
+---
+---
+{% include header.html title="NEWS｜こんてにゅ～" description="こんてにゅ～からのお知らせ一覧です。大会出場情報や活動状況などをお伝えします。" %}
+<center><font size="6"><b>お知らせ一覧</b></font></center>
+<hr size="2">
+{% assign news_list = site.news | sort: "date" | reverse %}
+<font size="3">
+<table border="1" cellpadding="5" cellspacing="0">
+<tr bgcolor="#CCCCFF"><td><b>日付</b></td><td><b>タイトル</b></td></tr>
+{% for post in news_list %}
+<tr><td>{{ post.date | date: "%Y.%m.%d" }}</td><td><a href="{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</table>
+</font>
+{% include footer.html %}
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,129 @@
+- name: "pikurintan"
+  role: "リーダー、マネージャー"
+  comment: "楽しくロボコンします！"
+  team_tags:
+    - "制御班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/pikurintan"
+  articles: []
+
+- name: "One杉"
+  role: "サブリーダー、広報"
+  comment: ""
+  team_tags:
+    - "機構班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/OneKrp"
+  articles: []
+
+- name: "naokichi"
+  role: "サブリーダー、書類"
+  comment: ""
+  team_tags:
+    - "回路班"
+    - "制御班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/4869naokichi"
+  articles: []
+
+- name: "しゅりんぷ"
+  role: "機構班長"
+  comment: ""
+  team_tags:
+    - "機構班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/ebi_1214"
+  articles: []
+
+- name: "pizac"
+  role: "回路班員"
+  comment: ""
+  team_tags:
+    - "回路班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/pizac__"
+  articles: []
+
+- name: "きゅりあす"
+  role: "制御班長、会計"
+  comment: ""
+  team_tags:
+    - "制御班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/curious_robo"
+  articles: []
+
+- name: "Ray"
+  role: "広報"
+  comment: ""
+  team_tags:
+    - "制御班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: ""
+  articles: []
+  
+- name: "hauki"
+  role: ""
+  comment: ""
+  team_tags:
+    - "制御班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: ""
+  articles: []
+
+- name: "0.hayate"
+  role: ""
+  comment: ""
+  team_tags:
+    - "回路班"
+  projects:
+    - name: "CoRE 2025"
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: ""
+  articles: []
+
+- name: "ウ夕"
+  role: ""
+  comment: ""
+  team_tags:
+    - "制御班"
+  projects:
+    - name: "CoRE 2026"
+  links:
+    - label: "X"
+      url: "https://x.com/tau_again"
+  articles: []
