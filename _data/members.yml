@@ -10,7 +10,13 @@
   links:
     - label: "X"
       url: "https://x.com/pikurintan"
-  articles: []
+  articles:
+    - title: "ホームページを公開しました"
+      url: "/news/homepage-launch/"
+    - title: "MFT2026出展決定"
+      url: "/news/sample-post/"
+    - title: "CoRE 2026 参加レポート（テスト用）"
+      url: "/blog/core2026-report/"
 
 - name: "One杉"
   role: "サブリーダー、広報"
