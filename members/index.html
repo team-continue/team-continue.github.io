@@ -5,7 +5,7 @@
 <hr size="2">
 <font size="3">こんてにゅ～のメンバーです。よろしくおねがいします。</font><br><br>
 {% for member in site.data.members %}
-<table border="1" cellpadding="5" cellspacing="0" width="90%">
+<table border="1" cellpadding="5" cellspacing="0" width="90%" id="member-{{ member.name | slugify }}">
 <tr bgcolor="#CCCCFF"><td colspan="2"><font size="4"><b>{{ member.name }}</b></font>　<font size="2">{{ member.role }}</font></td></tr>
 {% assign x_link = member.links | where: "label", "X" | first %}
 <tr>

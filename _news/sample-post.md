@@ -2,6 +2,8 @@
 title: "MFT2026出展決定"
 date: 2026-07-26
 description: "Maker Fair Tokyo 2026に出店が決定"
+authors:
+  - "pikurintan"
 ---
 
 **Maker Fair Tokyo 2026に出店が決定しました！！**

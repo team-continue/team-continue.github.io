@@ -1,3 +1,7 @@
+kramdown:
+  input: GFM
+  hard_wrap: true
+
 collections:
   blog:
     output: true
