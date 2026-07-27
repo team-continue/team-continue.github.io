@@ -1,6 +1,6 @@
 - name: "pikurintan"
   role: "リーダー、マネージャー"
-  comment: "楽しくロボコンします！"
+  comment: "楽しい楽しい締切駆動開発"
   photo: "https://pbs.twimg.com/profile_images/1152880800976654336/p2FVZSwT_400x400.jpg"
   team_tags:
     - "制御班"
@@ -20,7 +20,7 @@
 
 - name: "One杉"
   role: "サブリーダー、広報"
-  comment: ""
+  comment: "苦しんでこその趣味"
   photo: "https://pbs.twimg.com/profile_images/1872071603984670720/m2Wa7J3L_400x400.jpg"
   team_tags:
     - "機構班"
@@ -34,7 +34,7 @@
 
 - name: "naokichi"
   role: "サブリーダー、書類"
-  comment: ""
+  comment: "結婚したい"
   photo: "https://pbs.twimg.com/profile_images/1739688640652140544/MCNDNivt_400x400.jpg"
   team_tags:
     - "回路班"
@@ -49,7 +49,7 @@
 
 - name: "しゅりんぷ"
   role: "機構班長"
-  comment: ""
+  comment: "設計は思想が8割、妄言2割"
   photo: "https://pbs.twimg.com/profile_images/1561550527313326080/kcw7qQJd_400x400.jpg"
   team_tags:
     - "機構班"
@@ -63,7 +63,7 @@
 
 - name: "pizac"
   role: "回路班員"
-  comment: ""
+  comment: "( ﾟ∀ﾟ)o彡°えーあい！えーあい！"
   photo: "https://pbs.twimg.com/profile_images/1740100643225042944/hIr7_1mJ_400x400.jpg"
   team_tags:
     - "回路班"
@@ -77,7 +77,7 @@
 
 - name: "きゅりあす"
   role: "制御班長、会計"
-  comment: ""
+  comment: "何でもは知らないです、知ってることだけ"
   photo: "https://pbs.twimg.com/profile_images/1815405829249703936/J6w2hb0M_400x400.jpg"
   team_tags:
     - "制御班"
@@ -91,8 +91,8 @@
 
 - name: "Ray"
   role: "広報"
-  comment: ""
-  photo: ""
+  comment: "リファクタリングはソースコードを理解、分解、再構築する技術なり。されど万能の技にはあらず。無から有をコンパイルすること能はず。何かを作り替えようと欲すれば、必ず、同等の対価を支払うものなり。これ即ちプログラミングの基本、「コーディング」なり。プログラマーに禁忌あり、其は「goto文錬成」なり、是何人も冒すことなかれ。"
+  photo: /src/ray_image.jpg
   team_tags:
     - "制御班"
   projects:
@@ -105,8 +105,8 @@
   
 - name: "hauki"
   role: ""
-  comment: ""
-  photo: ""
+  comment: "何も考えずぼーっと生きてたい"
+  photo: /src/hauki_image.png
   team_tags:
     - "制御班"
   projects:
@@ -120,7 +120,7 @@
 - name: "0.hayate"
   role: ""
   comment: ""
-  photo: ""
+  photo: /src/0hayate_image.jpg
   team_tags:
     - "回路班"
   projects:
