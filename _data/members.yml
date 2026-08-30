@@ -73,7 +73,9 @@
   links:
     - label: "X"
       url: "https://x.com/pizac__"
-  articles: []
+  articles:
+    - title: "CoRE2026でEtherCATを使ってみた"
+      url: "/blog/core2026-ethercat/"
 
 - name: "きゅりあす"
   role: "制御班長、会計"
