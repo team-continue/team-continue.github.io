@@ -13,6 +13,14 @@ body {
   margin: 0 auto 10px;
 }
 
+.news-photo {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 8px auto;
+}
+
 body::before {
   content: "";
   position: fixed;
