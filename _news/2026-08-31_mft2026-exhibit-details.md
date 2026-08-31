@@ -16,12 +16,12 @@ authors:
 ダメージパネルを自動で認識して発射する様子をお見せできればと思います！
 
 ↓展示するアタッカーロボット「Orthrus」
-![アタッカーロボット「Orthrus」](/news/image.png)
+![アタッカーロボット「Orthrus」](/news/image.png){: .news-photo }
 
 また、今回新規で作成中の**四足歩行ロボット**も展示予定です！
 
 ↓展示する四脚ロボット「Pochi」
-![四脚ロボット「Pochi」](/news/image-1.png)
+![四脚ロボット「Pochi」](/news/image-1.png){: .news-photo }
 
 こんてにゅ～のブースは**B 02-01**です。ぜひ遊びに来てください！
 
