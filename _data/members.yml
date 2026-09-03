@@ -11,12 +11,6 @@
     - label: "X"
       url: "https://x.com/pikurintan"
   articles:
-    - title: "ホームページを公開しました"
-      url: "/news/2026-07-25_homepage-launch/"
-    - title: "MFT2026出展決定"
-      url: "/news/2026-07-26_sample-post/"
-    - title: "MFTの出展内容について"
-      url: "/news/2026-08-31_mft2026-exhibit-details/"
     - title: "CoRE 2026 参加レポート（テスト用）"
       url: "/blog/core2026-report/"
 
