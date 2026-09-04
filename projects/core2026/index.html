@@ -1,13 +1,32 @@
 ---
 ---
 {% include header.html title="CoRE 2026｜こんてにゅ～" description="こんてにゅ～のCoRE 2026プロジェクト紹介ページです。自律で動き、自動で狙う" %}
-<center><font size="6"><b>CoRE 2026</b></font></center>
+<center>
+    <font size="6"><b>CoRE 2026</b></font>
+</center>
 <hr size="2">
-<font size="3">準備中です。近日公開予定ですので、しばらくお待ちください。</font>
+<font size="4" color="#000080"><b>■概要</b></font>
+<hr size="1">
+<font size="3">
+    CoRE2026は、こんてにゅ～が開発した2号機（1号機の改修型）です。フライングディスクを射出するアタッカーロボット「Orthrus」で出場しました。<br><br>
+    <b>コンセプト</b><br>
+    ・自律で動き、自動で狙う ─ 自己位置推定と経路計画で走行し、カメラでダメージパネルを認識して射撃する<br><br>
+    <b>技術構成</b><br>
+    ・機構 ─ 4輪オムニの足回り、無限回転する上部車体、左右2基の砲塔とディスクマガジン・発射機構<br>
+    ・回路 ─ Teensy 4.1を上部・下部の2枚構成とし、制御PCとはEtherCAT（SOEM / AX58100）、モータへはCAN 2系統、サーボ・ESC・競技装置はシリアルとPWMで接続<br>
+    ・ソフトウェア ─ ROS 2ベース。LiDARによる自己位置推定と経路計画・制御、カメラによるダメージパネル検出、行動判断の状態機械、2軸ジンバルと射撃制御などを実装
+</font>
+<br><br>
+<font size="4" color="#000080"><b>■ドキュメント</b></font>
+<hr size="1">
+<font size="3">詳しい開発データはドキュメントサイトとGitHubで公開しています。<br>
+    → <a href="https://team-continue.github.io/core2026/">https://team-continue.github.io/core2026/</a><br>
+    → <a href="https://github.com/team-continue/core2026">https://github.com/team-continue/core2026</a></font>
 {% include footer.html %}
 </font>
 </td>
 </tr>
 </table>
 </body>
+
 </html>
